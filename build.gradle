@@ -3,6 +3,7 @@ buildscript {
 		springBootVersion = '1.5.10.RELEASE'
 	}
 	repositories {
+		jcenter()
 		mavenCentral()
 	}
 	dependencies {
