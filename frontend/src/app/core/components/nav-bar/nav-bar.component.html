@@ -1,0 +1,67 @@
+<!--<nav class="navbar navbar-expand-lg">-->
+  <!--<a class="navbar-brand" href="/">CPQ Translate</a>-->
+  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"-->
+          <!--aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--<span class="navbar-toggler-icon"></span>-->
+  <!--</button>-->
+  <!--<div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
+    <!--<div class="navbar-nav">-->
+      <!--<a class="nav-item nav-link active" href="home">Home<span-->
+        <!--class="sr-only">(current)</span></a>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<ul class="nav navbar-nav navbar-right">-->
+    <!--<li>-->
+      <!--<button-->
+        <!--class="btn-sm btn-primary btn-margin">-->
+        <!--Login-->
+      <!--</button>-->
+    <!--</li>-->
+    <!--&lt;!&ndash;<li *ngIf="userProfile">&ndash;&gt;-->
+      <!--&lt;!&ndash;<div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<img class="rounded-circle profile-image" src="{{ userProfile.picture }}">&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+      <!--&lt;!&ndash;<button&ndash;&gt;-->
+        <!--&lt;!&ndash;class="btn-sm btn-primary btn-margin"&ndash;&gt;-->
+        <!--&lt;!&ndash;*ngIf="!auth.isAuthenticated()"&ndash;&gt;-->
+        <!--&lt;!&ndash;(click)="auth.doLogin()">&ndash;&gt;-->
+        <!--&lt;!&ndash;{{ 'navbar.login' | translate }}&ndash;&gt;-->
+      <!--&lt;!&ndash;</button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+      <!--&lt;!&ndash;<button&ndash;&gt;-->
+        <!--&lt;!&ndash;class="btn-sm btn-primary btn-margin"&ndash;&gt;-->
+        <!--&lt;!&ndash;*ngIf="auth.isAuthenticated()"&ndash;&gt;-->
+        <!--&lt;!&ndash;(click)="auth.doLogout()">&ndash;&gt;-->
+        <!--&lt;!&ndash;{{ 'navbar.logout' | translate }}&ndash;&gt;-->
+      <!--&lt;!&ndash;</button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+  <!--</ul>-->
+<!--</nav>-->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">CPQ Translate</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <!--suppress HtmlUnknownTarget -->
+        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <button
+          class="btn-sm btn-primary btn-margin">
+          Login
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
