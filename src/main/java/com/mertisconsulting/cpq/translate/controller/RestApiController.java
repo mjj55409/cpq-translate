@@ -58,7 +58,7 @@ public class RestApiController {
     // -------------------Create a Project------------------------------------------
 
     @RequestMapping(value = "project/", method = RequestMethod.POST)
-    public ResponseEntity<?> createUser(@RequestBody Project project, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> createProject(@RequestBody Project project, UriComponentsBuilder ucBuilder) {
         logger.info("Creating Project : {}", project);
 
         if (projectService.isProjectExist(project)) {
@@ -73,5 +73,53 @@ public class RestApiController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/project/{id}").buildAndExpand(project.getId()).toUri());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+    }
+
+    // -------------------Update a Project------------------------------------------
+
+    @RequestMapping(value = "project/{id}", method = RequestMethod.PATCH)
+    public ResponseEntity<?> updateProject(@PathVariable("id") long id, @RequestBody Project project) {
+        logger.info("Updating Project : {}", project);
+
+        Project currentProject = projectService.findById(project.getId());
+
+        if (currentProject == null) {
+            logger.error("Unable to update. A Project with id {} not found.", project.getId());
+            return new ResponseEntity<>(
+                    new ApiErrorMessage("Unable to update. A Project with id " +
+                            project.getId() + " not found."),
+                    HttpStatus.NOT_FOUND);
+        }
+        projectService.updateProject(project);
+
+        return new ResponseEntity<>(project, HttpStatus.OK);
+    }
+
+    // -------------------Delete a Project------------------------------------------
+
+    @RequestMapping(value = "project/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteProject(@PathVariable("id") long id) {
+        logger.info("Deleting Project with id {}", id);
+
+        Project project = projectService.findById(id);
+
+        if (project == null) {
+            logger.error("Unable to delete. Project with id {} not found.", id);
+            return new ResponseEntity<>(new ApiErrorMessage("Unable to delete. Project with id " + id + " not found."),
+                    HttpStatus.NOT_FOUND);
+        }
+        projectService.deleteProjectById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    // -------------------Delete all Project----------------------------------------
+
+    @RequestMapping(value = "project/", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteAllProjects() {
+        logger.info("Deleting all Projects.");
+
+        projectService.deleteAllProjects();
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
