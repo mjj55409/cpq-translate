@@ -1,4 +1,4 @@
-package com.mertisconsulting.cpq;
+package com.mertisconsulting.cpqtranslate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
