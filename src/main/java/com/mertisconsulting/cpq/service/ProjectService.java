@@ -1,6 +1,6 @@
-package com.mertisconsulting.cpq.translate.service;
+package com.mertisconsulting.cpq.service;
 
-import com.mertisconsulting.cpq.translate.model.Project;
+import com.mertisconsulting.cpq.model.Project;
 
 import java.util.List;
 

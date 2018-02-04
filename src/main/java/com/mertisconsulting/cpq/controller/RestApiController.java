@@ -1,8 +1,8 @@
-package com.mertisconsulting.cpq.translate.controller;
+package com.mertisconsulting.cpq.controller;
 
-import com.mertisconsulting.cpq.translate.model.Project;
-import com.mertisconsulting.cpq.translate.service.ProjectService;
-import com.mertisconsulting.cpq.translate.util.ApiErrorMessage;
+import com.mertisconsulting.cpq.model.Project;
+import com.mertisconsulting.cpq.service.ProjectService;
+import com.mertisconsulting.cpq.util.ApiErrorMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

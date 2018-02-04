@@ -1,4 +1,4 @@
-package com.mertisconsulting.cpq.translate.model;
+package com.mertisconsulting.cpq.model;
 
 public class Project {
 

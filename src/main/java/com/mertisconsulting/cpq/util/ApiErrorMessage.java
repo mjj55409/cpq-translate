@@ -1,4 +1,4 @@
-package com.mertisconsulting.cpq.translate.util;
+package com.mertisconsulting.cpq.util;
 
 public class ApiErrorMessage {
 
