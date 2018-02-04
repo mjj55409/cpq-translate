@@ -12,7 +12,6 @@ buildscript {
 }
 
 apply plugin: 'java'
-//apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
@@ -26,11 +25,11 @@ repositories {
 
 
 dependencies {
-	compile('org.webjars:bootstrap:4.0.0')
-	compile('org.webjars.bower:fontawesome:4.7.0')
-	compile('org.webjars.bower:jquery:3.3.1')
+//	compile('org.webjars:bootstrap:4.0.0')
+//	compile('org.webjars.bower:fontawesome:4.7.0')
+//	compile('org.webjars.bower:jquery:3.3.1')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-devtools')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+//	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
