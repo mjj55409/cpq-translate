@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../core/services/project.service";
-import {SharedModule} from "../shared/shared.module";
 
 @Component({
-  import: [
-    SharedModule
-  ],
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']

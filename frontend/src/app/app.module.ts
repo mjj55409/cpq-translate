@@ -7,12 +7,14 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HomeComponent} from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
+import {IndexComponent} from "./index/index.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    IndexComponent,
   ],
   imports: [
     CoreModule,
