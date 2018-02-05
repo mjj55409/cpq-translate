@@ -22,8 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         JwtWebSecurityConfigurer
                 .forRS256(apiAudience, issuer)
                 .configure(http)
-                .cors().and().csrf().disable().authorizeRequests()
-                .anyRequest().authenticated();
+                .cors().and().csrf().disable()
+//                .authorizeRequests().anyRequest().authenticated();
+                .authorizeRequests().anyRequest().permitAll();
     }
 }
 

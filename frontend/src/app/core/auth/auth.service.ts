@@ -48,7 +48,6 @@ export class AuthService {
     console.log('Handle authentication...');
     this.auth0.parseHash((err, authResult) => {
       if ( authResult && authResult.accessToken && authResult.idToken ) {
-        // window.location.hash = '';
         this.setSession(authResult);
         this.router.navigate(['/home']);
       } else if ( err ) {
@@ -71,6 +70,10 @@ export class AuthService {
   get authenticated(): boolean {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
+  }
+
+  get token() : string {
+    return localStorage.getItem('access_token');
   }
 
   private setSession(authResult): void {
