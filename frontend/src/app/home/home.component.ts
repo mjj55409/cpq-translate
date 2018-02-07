@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ProjectService} from "../core/services/project.service";
+import {WorkspaceFacadeService} from "../workspace/workspace-project-facade";
+import {Project} from "../workspace/project";
 
 @Component({
   selector: 'app-home',
@@ -8,15 +9,12 @@ import {ProjectService} from "../core/services/project.service";
 })
 export class HomeComponent implements OnInit {
 
-  projects: Array<any>;
+  projects: Array<Project>;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private workspaceFacade: WorkspaceFacadeService) { }
 
   ngOnInit() {
-    this.projectService.getAll().subscribe(
-      res => this.projects = res,
-      err => console.log(err)
-    );
+    this.workspaceFacade.getProjects().subscribe(data => this.projects = data);
   }
 
 }

@@ -1,14 +1,20 @@
-<div class="container">
-  <ul>
-    <li class="list-group-item"  *ngFor="let project of projects">
-      <div class="card">
-        <div class="card-block">
-          <h4 class="card-title">{{project.name}}</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
+<ul>
+  <li class="list-group-item" *ngFor="let project of projects">
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">{{ project.name }}</h4>
+        <p class="card-text">{{ project.description }}</p>
+        <a [routerLink]="['/project', project.id]" class="card-link">Settings</a>
+        <a href="#" class="card-link">Work</a>
       </div>
-    </li>
-  </ul>
-</div>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-lg"
+      routerLink="/project">
+      <span class="fas fa-plus card-text"></span> Create New Project
+    </button>
+  </li>
+</ul>

@@ -8,6 +8,7 @@ import {HomeComponent} from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import {IndexComponent} from "./index/index.component";
+import {WorkspaceProjectModule} from "./workspace/workspace-project.module";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {IndexComponent} from "./index/index.component";
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    WorkspaceProjectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
