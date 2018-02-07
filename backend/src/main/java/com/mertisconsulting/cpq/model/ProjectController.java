@@ -54,7 +54,7 @@ public class ProjectController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("")
+    @DeleteMapping()
     public ResponseEntity deleteAllProjects() {
         projectRepository.deleteAll();
         return ResponseEntity.ok().build();

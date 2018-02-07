@@ -63,7 +63,14 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
+  deleteProject() {
+    this.facade.deleteProject(this.projectForm.get('id').value);
+    this.location.back();
+  }
+
   get name() { return this.projectForm.get('name'); }
+
+  get id() { return this.projectForm.get('id'); }
 
   private createForm() {
     this.projectForm = this.fb.group({

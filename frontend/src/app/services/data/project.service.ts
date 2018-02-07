@@ -8,6 +8,8 @@ import {catchError} from "rxjs/operators";
 @Injectable()
 export class ProjectDataService extends DataService {
 
+  private static BASE_URL = '//localhost:8080/api/project/';
+
   constructor(http: HttpClient) {
     super(http);
   }
@@ -15,22 +17,28 @@ export class ProjectDataService extends DataService {
   getAll(): Observable<any> {
     console.log('Retrieving all projects.');
     return this.httpClient
-      .get('//localhost:8080/api/project/')
+      .get(ProjectDataService.BASE_URL )
       .pipe(catchError(this.handleError));
   }
 
-  getProjectById(id: number): Observable<Project> {
+  getProjectById(id: string): Observable<Project> {
     console.log('Get project with id = ' + id);
-    return this.httpClient.get('//localhost:8080/api/project/' + id + '/');
+    return this.httpClient.get( ProjectDataService.BASE_URL + id + '/');
   }
 
   saveProject(project: Project): Observable<any> {
-    return this.httpClient.post('http://localhost:8080/api/project/', project);
+    return this.httpClient.post(ProjectDataService.BASE_URL , project);
 
   }
 
-  deleteProject(project: Project) {
-    console.log('Deleting project: ' + project);
+  deleteProject(id: string): Observable<any> {
+    console.log('Deleting project with id ' + id);
+    return this.httpClient.delete(ProjectDataService.BASE_URL  + id + '/');
   }
+
+  // deleteAllProjects(): Observable<any> {
+  //   console.log('Deleting all projects.');
+  //   return this.httpClient.delete(ProjectDataService.BASE_URL);
+  // }
 
 }

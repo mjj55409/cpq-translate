@@ -37,4 +37,13 @@
     <button type="button" (click)="cancel()"
             class="btn btn-danger">Cancel</button>
   </div>
+
+  <div class="container" *ngIf="!isCreating">
+    <h3>Danger Zone</h3>
+    <div class="card border border-danger" style="width: 50em">
+      <div class="card-body">
+        <button class="btn btn-danger" (click)="deleteProject()">Delete This Project</button>
+      </div>
+    </div>
+  </div>
 </form>

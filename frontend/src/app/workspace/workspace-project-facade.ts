@@ -19,7 +19,7 @@ export class WorkspaceFacadeService {
     return this.projects.asObservable();
   }
 
-  getProject(id: number): Observable<Project> {
+  getProject(id: string): Observable<Project> {
     this.projectService.getProjectById(id).subscribe(
       data => this.setCurrentProject(data)
     );
@@ -36,6 +36,19 @@ export class WorkspaceFacadeService {
     );
   }
 
+  deleteProject(id: string) {
+    this.projectService.deleteProject(id).subscribe(
+      () => this.getAllProjects()
+    );
+    // return this.projectService.deleteProject(id).subscribe(
+    //   () => this.getAllProjects()
+    // );
+  }
+
+  // deleteAllProjects(): Observable<any> {
+  //   return this.projectService.deleteAllProjects();
+  // }
+  //
   private setCurrentProject(project: Project) {
     this.currentProject.next(project);
   }
