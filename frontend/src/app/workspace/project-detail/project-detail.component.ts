@@ -41,6 +41,8 @@ export class ProjectDetailComponent implements OnInit {
     this.location.back();
   }
 
+  get name() { return this.projectForm.get('name'); }
+
   private createForm() {
     this.projectForm = this.fb.group({
         id: 0,
