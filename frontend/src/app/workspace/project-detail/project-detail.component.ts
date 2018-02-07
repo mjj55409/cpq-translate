@@ -1,18 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {WorkspaceFacadeService} from "../workspace-project-facade";
 import {Location} from "@angular/common";
 import {Project} from "../project";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-project-detail',
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.css']
 })
-export class ProjectDetailComponent implements OnInit {
+export class ProjectDetailComponent implements OnInit, OnDestroy {
 
   projectForm: FormGroup;
+  sub: Subscription;
+  isCreating: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -23,13 +26,32 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe( params =>
-      this.facade.getProject(params['id']).subscribe(data =>
-        this.projectForm.patchValue({
-          id: data.id,
-          name: data.name,
-          description: data.description,
-        })));
+    // this.sub = this.route.params.subscribe( params =>
+    //   this.facade.getProject(params['id']).subscribe(data =>
+    //     this.projectForm.patchValue({
+    //       id: data.id,
+    //       name: data.name,
+    //       description: data.description,
+    //     })));
+
+    this.sub = this.route.params.subscribe(params => {
+      const id = params['id'];
+      if (id) {
+        this.facade.getProject(id).subscribe( data =>
+          this.projectForm.patchValue({
+            id: data.id,
+            name: data.name,
+            description: data.description,
+          })
+        )
+      } else {
+        this.isCreating = true;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   onSubmit() {
@@ -45,17 +67,24 @@ export class ProjectDetailComponent implements OnInit {
 
   private createForm() {
     this.projectForm = this.fb.group({
-        id: 0,
+        id: '',
         name: ['', Validators.required],
         description: '',
     });
   }
 
   private prepareSave(): Project {
-    return {
-      id: this.projectForm.value.id,
-      name: this.projectForm.value.name,
-      description: this.projectForm.value.description,
-    };
+    if (this.isCreating) {
+      return {
+        name: this.projectForm.value.name,
+        description: this.projectForm.value.description,
+      };
+    } else {
+      return {
+        id: this.projectForm.value.id,
+        name: this.projectForm.value.name,
+        description: this.projectForm.value.description,
+      };
+    }
   }
 }

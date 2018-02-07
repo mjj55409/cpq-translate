@@ -26,12 +26,14 @@ export class WorkspaceFacadeService {
     return this.currentProject.asObservable();
   }
 
-  getCurrentProject(): Observable<Project> {
-    return this.currentProject.asObservable();
-  }
-
+  // getCurrentProject(): Observable<Project> {
+  //   return this.currentProject.asObservable();
+  // }
+  //
   saveProject(project: Project) {
-    this.projectService.saveProject(project).subscribe( () => this.getAllProjects());
+    return this.projectService.saveProject(project).subscribe(
+      () => this.getAllProjects()
+    );
   }
 
   private setCurrentProject(project: Project) {

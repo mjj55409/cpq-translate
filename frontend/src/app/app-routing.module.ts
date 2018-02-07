@@ -15,6 +15,9 @@ const appRoutes: Routes = [
   {path: 'project/:id',
     component: ProjectDetailComponent,
     canActivate: [AuthGuardService] },
+  {path: 'project',
+    component: ProjectDetailComponent,
+    canActivate: [AuthGuardService] },
   {path: 'callback', component: CallbackComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
